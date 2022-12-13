@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class ArrayList<Type> implements ArrayListInterface<Type> {
+public class ArrayList<E> implements ArrayListInterface<E> {
 
     private int capacity = 10;
 
@@ -17,7 +17,7 @@ public class ArrayList<Type> implements ArrayListInterface<Type> {
         this.content = new Object[capacity];
     }
 
-    public ArrayList(ArrayList<Type> arraylists) {
+    public ArrayList(ArrayList<E> arraylists) {
         if (arraylists == null) {
             return;
         }
@@ -30,11 +30,11 @@ public class ArrayList<Type> implements ArrayListInterface<Type> {
         }
     }
 
-    public static class ArrayIterator<Type> implements Iterator<Type> {
+    public static class ArrayIterator<E> implements Iterator<E> {
         int currentIndex = 0;
-        transient ArrayList<Type> array;
+        transient ArrayList<E> array;
 
-        public ArrayIterator(ArrayList<Type> array) {
+        public ArrayIterator(ArrayList<E> array) {
             this.array = array;
         }
 
@@ -44,8 +44,8 @@ public class ArrayList<Type> implements ArrayListInterface<Type> {
         }
 
         @Override
-        public Type next() {
-            Type value = array.get(currentIndex);
+        public E next() {
+            E value = array.get(currentIndex);
             ++currentIndex;
             return value;
         }
@@ -57,15 +57,15 @@ public class ArrayList<Type> implements ArrayListInterface<Type> {
     }
 
     @Override
-    public Type get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size " + size);
         }
-        return (Type) content[index];
+        return (E) content[index];
     }
 
     @Override
-    public void add(Type value) {
+    public void add(E value) {
         if (size == capacity) {
             grow();     // increase current capacity of list
         }
@@ -111,7 +111,7 @@ public class ArrayList<Type> implements ArrayListInterface<Type> {
     }
 
     @Override
-    public Type remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size "
                     + size);
@@ -123,11 +123,11 @@ public class ArrayList<Type> implements ArrayListInterface<Type> {
         }
         content[size - 1] = null;
         size--;
-        return (Type) removedElement;
+        return (E) removedElement;
     }
 
     @Override
-    public Iterator<Type> iterator() {
+    public Iterator<E> iterator() {
         return new ArrayIterator<>(this);
     }
 

@@ -1,19 +1,19 @@
 import java.util.Iterator;
 
-public interface ArrayListInterface<Type> extends Iterable<Type> {
+public interface ArrayListInterface<E> extends Iterable<E> {
 
     public int size();
 
-    public Type get(int index) throws IndexOutOfBoundsException;
+    public E get(int index) throws IndexOutOfBoundsException;
 
-    public void add(Type value);
+    public void add(E value);
 
     public boolean contains(Object object);
 
     public int lastIndexOf(Object object);
 
-    public Type remove(int index) throws IndexOutOfBoundsException;
+    public E remove(int index) throws IndexOutOfBoundsException;
 
     @Override
-    public Iterator<Type> iterator();
+    public Iterator<E> iterator();
 }

@@ -1,25 +1,23 @@
 import java.util.EmptyStackException;
+public class Stack<E> {
 
-
-public class Stack<Type> {
-
-    private ArrayList<Type> arrayList;
+    private ArrayList<E> arrayList;
 
     public Stack() {
-        arrayList = new ArrayList<Type>();
+        arrayList = new ArrayList<E>();
     }
 
     public boolean empty() {
         return arrayList.size() == 0;
     }
 
-    public Type push(Type item) {
+    public E push(E item) {
         arrayList.add(item);
 
         return item;
     }
 
-    public Type peek() {
+    public E peek() {
         int len = arrayList.size();
 
         if (len == 0)
@@ -27,8 +25,8 @@ public class Stack<Type> {
         return arrayList.get(len - 1);
     }
 
-    public Type pop() {
-        Type obj = arrayList.remove(arrayList.size() - 1);
+    public E pop() {
+        E obj = arrayList.remove(arrayList.size() - 1);
 
         return obj;
     }
@@ -42,13 +40,16 @@ public class Stack<Type> {
         return -1;
     }
 
-    public void add(Type value) {
+    public boolean contains(Object object) {
+        return arrayList.contains(object);
+    }
+
+    public void add(E value) {
         arrayList.add(value);
     }
 
     public int size() {
         return arrayList.size();
     }
-
 }
 
