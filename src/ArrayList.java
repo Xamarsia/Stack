@@ -32,7 +32,7 @@ public class ArrayList<E> implements ArrayListInterface<E> {
 
     public static class ArrayIterator<E> implements Iterator<E> {
         int currentIndex = 0;
-        transient ArrayList<E> array;
+        ArrayList<E> array;
 
         public ArrayIterator(ArrayList<E> array) {
             this.array = array;
